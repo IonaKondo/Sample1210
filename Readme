@@ -1,0 +1,22 @@
+#
+<<usage>>
+./Up-the-Ramp_test -frame make_fits11.fits make_fits12.fits make_fits13.fits 
+
+<<Program>>
+SampleProgram1_20201209.cpp: version1 20201209  >> output1.txt
+
+SampleProgram2_20201209.cpp: version2 20201209  >> output2.txt
+  #I have some modifications.
+  #1. (line 29) change LOOP defenition because the adress '*ds++' become null in LOOP2. I do not the reason...
+  #2. (line 76,77) modify how to define the parameters '*D' and '**ds' (line)  However I am not sure if the defenition 'ds=&D'
+
+comments:
+  # **ds (pointer to a pointer) which can be thought of as a 2D array
+  #   ds should have a size of npixels x nframes. So, if you want to fit up the ramp using 3 frames of 5x5 pixel size
+  #  *ds should point to the first row (that is the first frame) of an array of size 25 x 3
+  
+
+
+
+
+
