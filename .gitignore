@@ -1,0 +1,9 @@
+#All buffered files
+*~
+
+#All stackdumps
+*.stackdump
+
+#All executables
+*.exe
+
