@@ -16,7 +16,11 @@ comments:
   #  *ds should point to the first row (that is the first frame) of an array of size 25 x 3
   
 
-
+SampleProgram3_20201210.cpp: version3 20201210  >> output3.txt
+  #I have some modifications from version2.
+  #1. (line 32) undo the change of the defenition of 'LOOP'
+  #2. (line 55-58,) define the 2D array for '**ds' 
+  #(line 63 & 66-70 )I do not know how to initialize the adress position '*ds' increased by the LOOP in the Integral function.
 
 
 
