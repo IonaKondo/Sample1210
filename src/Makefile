@@ -5,7 +5,7 @@
 # GNU compilers, flags
 CPP = g++ -O3
 CFLAGS = -Wall -pedantic -Wno-deprecated
-LIBS = -lcfitsio -lm 
+LIBS = -lcfitsio -lm -lcurl 
 
 # Paths for includes and libraries
 INCP = -I/usr/local/include -I../module 
