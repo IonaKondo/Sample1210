@@ -5,6 +5,9 @@
 #All stackdumps
 *.stackdump
 
+#All object files
+*.o
+
 #All executables
 *.exe
 
