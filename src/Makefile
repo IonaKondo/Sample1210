@@ -30,6 +30,14 @@ Up-the-Ramp_test : Up-the-Ramp_test.cpp $(OBJS)
 Up-the-Ramp_test3 : Up-the-Ramp_test3.cpp $(OBJS)
 	${CPP} $(CFLAGS) -o Up-the-Ramp_test3 Up-the-Ramp_test3.cpp $(MODS)
 
+SampleProgram1_20201209 : SampleProgram1_20201209.cpp $(OBJS)
+	${CPP} $(CFLAGS) -o SampleProgram1_20201209 SampleProgram1_20201209.cpp $(MODS)
+
+SampleProgram2_20201209 : SampleProgram2_20201209.cpp $(OBJS)
+	${CPP} $(CFLAGS) -o SampleProgram2_20201209 SampleProgram2_20201209.cpp $(MODS)
+
+SampleProgram3_20201210 : SampleProgram3_20201210.cpp $(OBJS)
+	${CPP} $(CFLAGS) -o SampleProgram3_20201210 SampleProgram3_20201210.cpp $(MODS)
 
 # Modules compiled and linked separately
 sstring.o : sstring.cpp sstring.h

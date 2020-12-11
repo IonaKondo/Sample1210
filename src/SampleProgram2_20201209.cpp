@@ -1,7 +1,7 @@
-#comment
-#I have some modifications.
-#1. (line 29) change LOOP defenition because the adress '*ds++' become null in LOOP2. I do not the reason... 
-#2. (line 76,77) modify how to define the parameters '*D' and '**ds' (line)  However I am not sure if the defenition 'ds=&D' 
+//#comment
+//#I have some modifications.
+//#1. (line 29) change LOOP defenition because the adress '*ds++' become null in LOOP2. I do not the reason... 
+//#2. (line 76,77) modify how to define the parameters '*D' and '**ds' (line)  However I am not sure if the defenition 'ds=&D' 
 
 #include<stdio.h>                                                           
 #include<math.h>

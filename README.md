@@ -9,12 +9,15 @@ To compile code:
 
 ```
  cd src
- make Up-the-Ramp_test
+ make SampleProgram1_20201209
+ make SampleProgram2_20201209
+ make SampleProgram3_20201210
 ```
 
 ## Usage
 To run the program on test data, execute:
 ```
-./Up-the-Ramp_test -frame make_fits11.fits make_fits12.fits make_fits13.fits
+cd src
+./SampleProgram1_20201209 -frame ../tests/input/make_fits11.fits ../tests/input/make_fits12.fits ../tests/input/make_fits13.fits
 
 ```
