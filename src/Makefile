@@ -19,8 +19,6 @@ OBJS = $(addprefix $(OBJS_DIR)/, $(OBJS_FILE))
 # All required modules
 MODS = $(INCP) $(LIBP) $(OBJS) $(LIBS)
 
-
-
 ReferencePixelCorrect : ReferencePixelCorrect.cpp $(OBJS)
 	${CPP} $(CFLAGS) -o ReferencePixelCorrect ReferencePixelCorrect.cpp $(MODS)
 
@@ -41,6 +39,8 @@ SampleProgram3_20201210 : SampleProgram3_20201210.cpp $(OBJS)
 
 SampleProgram4_20201212 : SampleProgram4_20201212.cpp $(OBJS)
 	${CPP} $(CFLAGS) -o SampleProgram4_20201212 SampleProgram4_20201212.cpp $(MODS)
+
+tests: SampleProgram1_20201209 SampleProgram2_20201209 SampleProgram3_20201210 SampleProgram4_20201212
 
 # Modules compiled and linked separately
 sstring.o : sstring.cpp sstring.h
