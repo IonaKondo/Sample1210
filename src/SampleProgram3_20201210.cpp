@@ -20,7 +20,7 @@
 #define C 5                       //Cutoff/Gain //Glitch Cutoff/Gain
 #define E 2250                    //2*C*readvar/Gain //2C*V**2/G
 #define F 32000                   //Full Well //Full-well (saturation)cutoff
-#define G 2                       //Gain e/count //Detector Gain
+#define G 1                       //Gain e/count //Detector Gain
 //#define N 1048576                 //Num Dat 1024**2 //Number of consecutive good intervals (current “winning streak”)
 #define N 25                 //Num Dat 1024**2 //Number of consecutive good intervals (current “winning streak”)
 //#define N 524288                 //Num Dat 128*4096 for an output
@@ -48,66 +48,71 @@ main(int argc, char* argv[])
 
   FitsImage work;  //fitssubtract.cpp
   int nramp = 3;
-  int S,V;
+  int *S,*V; //S and V are int pointers to estimated signal and variance array.
   int *DS;
 
-
-   ds = (int**)malloc(sizeof(int*)*3);  //number of samples
-   for(int p=0;p<3;p++){
+  //ALlocate memory for ds
+  ds = (int**)malloc(sizeof(int*)*3);  //number of samples
+  for(int p=0;p<3;p++){
     ds[p] = (int*)malloc(sizeof(int)*N);  //number of pixels
-   }
+  }
 
-  for(int n=1; n<=nramp;n++){
-   printf ("\n\n---Start ramp fitting using %d samples--------------------\n",n);
-    D= ds[0];
-    *ds= ds[0];             //I do not know how to initialize the adress position of '*ds'
-   int ndata =0;
-   
-   if(n==3) {               //I do not know how to initialize the adress position of '*ds'
-     *ds--;
-     *ds--;
-     *ds--;
-   }
-
-   printf ("Seeing fits file no.%d\n",n);
-   if (n==1) load_image(work, filename1);
-   if (n==2) load_image(work, filename2);
-   if (n==3) load_image(work, filename3);
+  //ALlocate memory for S and V
+  S = (int*)malloc(sizeof(int)*N);  //number of pixels per sample/frame
+  V = (int*)malloc(sizeof(int)*N);  //number of pixels per sample/frame
 
 
+  //Sample for loop
+  int n;
+  for( n=1; n<=nramp;n++){
+    printf ("\n\n---Start ramp fitting using %d samples--------------------\n",n);
+    //D= ds[0];
+    //*ds= ds[0];             //I do not know how to initialize the adress position of '*ds'
+    int ndata =0;
+     
+    /*if(n==3) {               //I do not know how to initialize the adress position of '*ds'
+      *ds--;
+      *ds--;
+      *ds--;
+      }*/
 
+    printf ("Seeing fits file no.%d\n",n);
+    if (n==1) load_image(work, filename1);
+    if (n==2) load_image(work, filename2);
+    if (n==3) load_image(work, filename3);
+
+    //Fill ds array with data
     for (int i = 0; i < 5; ++i){
-    for (int j = 0; j < 5; ++j){
-    ds[n-1][ndata] = work.value(i, j);
-     printf ("flag0 ds[%d][%d]= %d \n",n-1,ndata,ds[n-1][ndata]);
-    ++ndata;
-    }}
+      for (int j = 0; j < 5; ++j){
+	ds[n-1][ndata] = work.value(i, j);
+	printf ("flag0 ds[%d][%d]= %d \n",n-1,ndata,ds[n-1][ndata]);
+	++ndata;
+      }
+    }
     printf("ndata= %d\n",ndata);
-
-
-    printf ("Before Integral: where is the adress: D_adress= %p ds_address=%p \n",D,*ds);
+    
+    printf ("Before Integral: where is the adress: D_adress= %p ds_address=%p \n",D,ds);
     //printf ("flag1 where is the adress: D_adress= %p ds_address=%p \n",D,*ds++);
     //printf ("flag1 where is the adress: D_adress= %p ds_address=%p \n",D,*ds);
-
+    
     if(n==1) continue;  // do ramp fitting when the number of samples is more than two samples.
     
+  }//end of sample for loop
 
-    Integrate(n, &S, &V);
-    DS = &S;
-    printf("1 S= %d V= %d \n",S,V);
-    printf("DS= %d \n",*DS);  
-    printf ("After Integral1: where is the adress: D_adress= %p ds_address=%p \n",D,*ds);
-  
-    printf ("---End ramp fitting using %d samples-------------------\n\n\n",n);
- }
+  //Integrate runs on all data in **ds and outputs results to S an V
+  Integrate(nramp, S, V); //S and V are already type int*
+  //DS = &S;
+  printf("1 S= %d V= %d \n",*S,*V);
+  //printf("DS= %d \n",*DS);  
+  printf ("After Integral1: where is the adress: D_adress= %p ds_address=%p \n",D,*ds);
+  printf ("---End ramp fitting using %d samples-------------------\n\n\n",n);
 
-
-for(int pp=0;pp<3;pp++){
-  free(ds[pp]);
-}
-free(ds); 
-
-
+  for(int pp=0;pp<3;pp++){
+    free(ds[pp]);
+  }
+  free(ds);
+  free(S);
+  free(V);
 
   return 0;
 }
@@ -191,7 +196,6 @@ LOOP{
     //*V++=(E<<2*B)/(t*G)+(x<<B)/(m*G);}}         //Variance estimate
     *V++=(E<<2*B)/(t*G)+(x<<B)/(m*G);        //Variance estimate
   //printf ("Integrate output V= %d\n", *V);
- // printf ("Integrate flag3 test= %d\n", test);
    test++;
 }
 printf ("LOOP3 Make Output end\n\n");
