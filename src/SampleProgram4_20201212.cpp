@@ -82,9 +82,10 @@ main(int argc, char* argv[])
   out.write(); 
   out.close();
 
-  for(int pp=0;pp<3;pp++){
+  /*This block cause an Abort. Not needed as we free below.
+    for(int pp=0;pp<3;pp++){
     free(ds[pp]);
-  }
+    }*/
   free(ds);
   free(S);
   free(V);
