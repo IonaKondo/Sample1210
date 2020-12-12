@@ -12,6 +12,7 @@ To compile code:
  make SampleProgram1_20201209
  make SampleProgram2_20201209
  make SampleProgram3_20201210
+ make SampleProgram4_20201212
 ```
 
 ## Usage
@@ -19,6 +20,6 @@ To run the program on test data, execute:
 ```
 cd src
 ./SampleProgram1_20201209 -frame ../tests/input/make_fits11.fits ../tests/input/make_fits12.fits ../tests/input/make_fits13.fits
-./SampleProgram4_20201210 -frame ../tests/input/make_fits11.fits ../tests/input/make_fits12.fits ../tests/input/make_fits13.fits -out ../tests/output/output4.fits
+./SampleProgram4_20201212 -frame ../tests/input/make_fits11.fits ../tests/input/make_fits12.fits ../tests/input/make_fits13.fits -out ../tests/output/output4.fits
 
 ```
