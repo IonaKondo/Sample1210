@@ -1,0 +1,43 @@
+#20201213
+#I have done some tests in order to check how *S value changes by input fits files.
+#As a result of tests, *S value did not changes by the number of up-the-ramp samples when the difference between the counts of the two consecutive frames is same.
+
+
+[nramp=3]
+  input counts: (1000, 5000, 9000)
+       outputs: P->s= 16000, P->w= 33554436, W= 16777217, z= 8000, m= 2, t= 4, x= 16000  
+       outputs: *S= 16000, t= 4, *S/t= 4000
+
+  input counts: (3000, 7000, 11000)
+       outputs: P->s= 16000, P->w= 33554436, W= 16777217, z= 8000, m= 2, t= 4, x= 16000  
+       outputs: *S= 16000, t= 4, *S/t= 4000
+
+  input counts: (2000, 5000, 8000)
+       outputs: P->s= 12000, P->w= 33554436, W= 16777217, z= 6000, m= 2, t= 4, x= 12000  
+       outputs: *S= 12000, t= 4, *S/t= 3000
+
+  input counts: (1000, 1200, 1400)
+       outputs: P->s= 800, P->w= 33554436, W= 16777217, z= 400, m= 2, t= 4, x= 800  
+       outputs: *S= 800, t= 4, *S/t= 200
+ 
+[nramp=4]
+  input counts: (1000, 5000, 9000, 13000)
+       outputs: P->s= 40000, P->w= 50331658, W= 16777217, z= 12000, m= 3, t= 10, x= 16000  
+       outputs: *S= 16000, t= 10, *S/t= 1600  
+
+  input counts: (3000, 7000, 11000, 15000)
+       outputs: P->s= 40000, P->w= 50331658, W= 16777217, z= 12000, m= 3, t= 10, x= 16000  
+       outputs: *S= 16000, t= 10, *S/t= 1600
+
+  input counts: (2000, 5000, 8000, 11000)
+       outputs: P->s= 30000, P->w= 50331658, W= 16777217, z= 9000, m= 3, t= 10, x= 12000  
+       outputs: *S= 12000, t= 10, *S/t= 1200  
+
+  input counts: (1000, 1200, 1400, 1600)
+       outputs: P->s= 2000, P->w= 50331658, W= 16777217, z= 600, m= 3, t= 10, x= 800  
+       outputs: *S= 800, t= 10, *S/t= 80
+
+[nramp=5]
+  input counts: (1000, 5000, 9000, 13000, 17000)
+       outputs: P->s= 80000, P->w= 67108884, W= 16777217, z= 16000, m= 4, t= 20, x= 16000  
+       outputs: *S= 16000, t= 20, *S/t= 800
