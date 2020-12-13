@@ -5,18 +5,15 @@ This code is a C++ implementation of the Offenberg et al 2005 algorithim to perf
 ## Compilation
 This code depends on CFISTIO. Please ensure that CFITSIO is installed to `/usr/local/`.
 
-To compile code:
+To compile code with set of sample programs:
 
 ```
  cd src
- make SampleProgram1_20201209
- make SampleProgram2_20201209
- make SampleProgram3_20201210
- make SampleProgram4_20201212
+ make tests
 ```
 
 ## Usage
-To run the program on test data, execute:
+To run a sample program on test data, execute:
 ```
 cd src
 ./SampleProgram1_20201209 -frame ../tests/input/make_fits11.fits ../tests/input/make_fits12.fits ../tests/input/make_fits13.fits
