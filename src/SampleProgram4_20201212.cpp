@@ -76,7 +76,8 @@ main(int argc, char* argv[])
   out.resize(5, 5);
   for (int i = 0; i<5; ++i)  
    for (int j = 0; j <5; ++j) {
-    out.assign(i, j, *S++);
+     //Shift output S right by number of noise bits, B
+     out.assign(i, j, *S++>>B);
   }
   out.create(outfile); 
   out.write(); 
