@@ -37,8 +37,8 @@ main(int argc, char* argv[])
   int *S,*V; //S and V are int pointers to estimated signal and variance array.
 
   //ALlocate memory for ds
-  ds = (int**)malloc(sizeof(int*)*3);  //number of samples
-  for(int p=0;p<3;p++){
+  ds = (int**)malloc(sizeof(int*)*nramp);  //number of samples
+  for(int p=0;p<nramp;p++){
     ds[p] = (int*)malloc(sizeof(int)*N);  //number of pixels
   }
 
@@ -82,14 +82,6 @@ main(int argc, char* argv[])
   out.create(outfile); 
   out.write(); 
   out.close();
-
-  /*This block cause an Abort. Not needed as we free below.
-    for(int pp=0;pp<3;pp++){
-    free(ds[pp]);
-    }*/
-  free(ds);
-  free(S);
-  free(V);
 
 }
 
