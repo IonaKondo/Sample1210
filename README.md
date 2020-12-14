@@ -3,7 +3,7 @@
 This code is a C++ implementation of the Offenberg et al 2005 algorithim to perform memory efficent up the ramp group sampling.
 
 ## Compilation
-This code depends on CFISTIO. Please ensure that CFITSIO is installed to `/usr/local/`.
+This code depends on CFITSIO. Please ensure that CFITSIO is installed to `/usr/local/`.
 
 To compile code with set of sample programs:
 
