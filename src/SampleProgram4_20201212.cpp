@@ -34,19 +34,19 @@ main(int argc, char* argv[])
   OptionSet parameter(argc, argv);
   FitsImage work;  //fitssubtract.cpp
   int nramp = 3;
-  int *S,*V; //S and V are int pointers to estimated signal and variance array.
+  int *S,*V, *S0, *V0; //S and V are int pointers to estimated signal and variance array.
 
   //ALlocate memory for ds
-  ds = (int**)malloc(sizeof(int*)*nramp);  //number of samples
+  int **ds0 = (int**)malloc(sizeof(int*)*nramp);  //number of samples
+ 
   for(int p=0;p<nramp;p++){
-    ds[p] = (int*)malloc(sizeof(int)*N);  //number of pixels
+    ds0[p] = (int*)malloc(sizeof(int)*N);  //number of pixels
   }
 
   //ALlocate memory for S and V
-  S = (int*)malloc(sizeof(int)*N);  //number of pixels per sample/frame
-  V = (int*)malloc(sizeof(int)*N);  //number of pixels per sample/frame
-
-
+  S0 = (int*)malloc(sizeof(int)*N);  //number of pixels per sample/frame
+  V0 = (int*)malloc(sizeof(int)*N);  //number of pixels per sample/frame
+  
   //Sample for loop
   for(int n=1; n<=nramp;n++){
     int ndata =0;
@@ -57,7 +57,7 @@ main(int argc, char* argv[])
     //Fill ds array with data
     for (int i = 0; i < 5; ++i){
       for (int j = 0; j < 5; ++j){
-	      ds[n-1][ndata] = work.value(i, j);
+	      ds0[n-1][ndata] = work.value(i, j);
 	      ++ndata;
       }
     }
@@ -65,6 +65,10 @@ main(int argc, char* argv[])
   }//end of sample for loop
 
 
+  //Create copies of pointers to increment in integrate function
+  ds = ds0;
+  S = S0;
+  V = V0;
 
   //Integrate runs on all data in **ds and outputs results to S an V
   Integrate(nramp, S, V); //S and V are already type int*
@@ -82,6 +86,13 @@ main(int argc, char* argv[])
   out.create(outfile); 
   out.write(); 
   out.close();
+
+  free(S0);
+  free(V0);
+  for(int i=0; i< nramp; ++i){
+    free(ds0[i]);
+  }
+  free(ds0);
 
 }
 
