@@ -40,7 +40,10 @@ SampleProgram3_20201210 : SampleProgram3_20201210.cpp $(OBJS)
 SampleProgram4_20201212 : SampleProgram4_20201212.cpp $(OBJS)
 	${CPP} $(CFLAGS) -o SampleProgram4_20201212 SampleProgram4_20201212.cpp $(MODS)
 
-tests: SampleProgram1_20201209 SampleProgram2_20201209 SampleProgram3_20201210 SampleProgram4_20201212
+SampleProgram5_20201221 : SampleProgram5_20201221.cpp $(OBJS)
+	${CPP} $(CFLAGS) -o SampleProgram5_20201221 SampleProgram5_20201221.cpp $(MODS)
+
+tests: SampleProgram1_20201209 SampleProgram2_20201209 SampleProgram3_20201210 SampleProgram4_20201212 SampleProgram5_20201221
 
 # Modules compiled and linked separately
 sstring.o : sstring.cpp sstring.h
