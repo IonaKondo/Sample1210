@@ -40,12 +40,6 @@ struct {float w,s,t,z,a; int n,m;} M[N], *P, *Q;            //External Memory
 float **ds; float *D;                         //Input Data
 void Integrate(int n,float *S,float *V) ;          //Samples, Out, Variance
 
-long getCurrentTime() {
-      struct timeval tv;
-      gettimeofday(&tv,NULL);
-      return tv.tv_sec * 1000 + tv.tv_usec / 1000;
-}
-
 int
 main(int argc, char* argv[])
 {
