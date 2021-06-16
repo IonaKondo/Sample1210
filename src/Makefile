@@ -22,28 +22,13 @@ MODS = $(INCP) $(LIBP) $(OBJS) $(LIBS)
 ReferencePixelCorrect : ReferencePixelCorrect.cpp $(OBJS)
 	${CPP} $(CFLAGS) -o ReferencePixelCorrect ReferencePixelCorrect.cpp $(MODS)
 
-Up-the-Ramp_test : Up-the-Ramp_test.cpp $(OBJS)
-	${CPP} $(CFLAGS) -o Up-the-Ramp_test Up-the-Ramp_test.cpp $(MODS)
-
-Up-the-Ramp_test3 : Up-the-Ramp_test3.cpp $(OBJS)
-	${CPP} $(CFLAGS) -o Up-the-Ramp_test3 Up-the-Ramp_test3.cpp $(MODS)
-
-SampleProgram1_20201209 : SampleProgram1_20201209.cpp $(OBJS)
-	${CPP} $(CFLAGS) -o SampleProgram1_20201209 SampleProgram1_20201209.cpp $(MODS)
-
-SampleProgram2_20201209 : SampleProgram2_20201209.cpp $(OBJS)
-	${CPP} $(CFLAGS) -o SampleProgram2_20201209 SampleProgram2_20201209.cpp $(MODS)
-
-SampleProgram3_20201210 : SampleProgram3_20201210.cpp $(OBJS)
-	${CPP} $(CFLAGS) -o SampleProgram3_20201210 SampleProgram3_20201210.cpp $(MODS)
-
 SampleProgram4_20201212 : SampleProgram4_20201212.cpp $(OBJS)
 	${CPP} $(CFLAGS) -o SampleProgram4_20201212 SampleProgram4_20201212.cpp $(MODS)
+	
+Up-the-ramp_float : Up-the-ramp_float.cpp $(OBJS)
+	${CPP} $(CFLAGS) -o Up-the-ramp_float Up-the-ramp_float.cpp $(MODS)
 
-SampleProgram5_20201221 : SampleProgram5_20201221.cpp $(OBJS)
-	${CPP} $(CFLAGS) -o SampleProgram5_20201221 SampleProgram5_20201221.cpp $(MODS)
-
-tests: SampleProgram1_20201209 SampleProgram2_20201209 SampleProgram3_20201210 SampleProgram4_20201212 SampleProgram5_20201221
+tests: SampleProgram4_20201212 Up-the-ramp_float
 
 # Modules compiled and linked separately
 sstring.o : sstring.cpp sstring.h
