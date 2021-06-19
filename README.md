@@ -17,6 +17,8 @@ To run a sample program on test data, execute:
 ```
 cd src
 ./SampleProgram4_20201212 -frame ../tests/input/make_fits11.fits ../tests/input/make_fits12.fits ../tests/input/make_fits13.fits -out ../tests/output/output4.fits
-./Up-the-ramp_float -frame ../tests/input/db_make_fits21.fit ../tests/input/db_make_fits22.fit ../tests/input/db_make_fits23.fit -out ../tests/output/output_float.fits
 
+./Up-the-ramp_float -frame (input fitsfile1) (input fitsfile2) (input fitsfile3)  -out (outputS fitsfile) (outputV)
+./Up-the-ramp_float -frame ../tests/input/DarkN1-0.fit.ref ../tests/input/DarkN2-0.fit.ref 
+../tests/input/DarkN3-0.fit.ref -out ../tests/output/output_float_S.fits ../tests/output/output_float_V.fits
 ```
